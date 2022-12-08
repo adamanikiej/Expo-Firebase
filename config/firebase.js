@@ -1,21 +1,25 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import 'firebase/auth';
+import Constants from 'expo-constants';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDkYASHbtoinmmsfNFVmShDbzPq_RIV1iU",
-  authDomain: "expo-firebasetest.firebaseapp.com",
-  projectId: "expo-firebasetest",
-  storageBucket: "expo-firebasetest.appspot.com",
-  messagingSenderId: "307054777993",
-  appId: "1:307054777993:web:4f061d1b0e2e09b1211858",
-  measurementId: "G-1SYNNES5DP"
+  apiKey: Constants.manifest?.extra?.firebaseApiKey,
+  authDomain: Constants.manifest?.extra?.firebaseAuthDomain,
+  projectId: Constants.manifest?.extra?.firebaseProjectId,
+  storageBucket: Constants.manifest?.extra?.firebaseStorageBucket,
+  messagingSenderId: Constants.manifest?.extra?.firebaseMessagingSenderId,
+  appId: Constants.manifest?.extra?.firebaseAppId,
+  measurementId: Constants.manifest?.extra?.firebaseMeasurementId
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+//can enable analtics and use them here I think
 const analytics = getAnalytics(app);
+
+export default app;
